@@ -1,0 +1,21 @@
+.button{
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    /* box-shadow: 1px 1px #000; */
+    border: 1px solid #ccc;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin-top: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.logo {
+    width: 20px;
+    height: 20px;
+}
+.text{
+    margin-left: 15px;
+    font-size: 15px;
+}

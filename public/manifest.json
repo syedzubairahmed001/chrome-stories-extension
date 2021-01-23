@@ -1,25 +1,24 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
+  "manifest_version": 2,
+
+  "name": "Chrome Stories",
+  "description": "Share and watch stories from people around the world while you browse!",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "View Stories"
+  },
+  "icons": {
+    "16": "logo.png"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-mQ7lEWIKEdk47002sW8jU/+tAkF3UYhZNRJA/zS51YM=' https://apis.google.com; default-src 'self' https://*.googleusercontent.com/ https://www.googleapis.com; img-src https://*.googleusercontent.com/ 'self' data:; ",
+    "permissions": [
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "content_scripts": [{
+    "js": [ "content.bundle.js" ],
+    "matches": [
+     "<all_urls>"
+    ]
+ } ]
 }

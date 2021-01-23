@@ -1,0 +1,16 @@
+.header {
+  padding: 5px;
+  width: 100%;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+
+.heading {
+  font-size: 15px;
+  font-weight: 400;
+}
