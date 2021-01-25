@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Auth.module.css";
-import logo from "../../images/logos/chrome_stories__100x100.png";
+import logo from "../../images/logos/logo_100x100.png";
 import GoogleSigninBtn from "../../components/GoogleSigninBtn/GoogleSigninBtn.component";
 
 const Auth = (props) => {
@@ -16,7 +16,7 @@ const Auth = (props) => {
           Share and watch stories from people around the world while you browse!
         </p>
       </div>
-      <div className={`flex-center`} >
+      <div className={`flex-center`}>
         <GoogleSigninBtn />
       </div>
     </div>

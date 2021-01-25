@@ -14,13 +14,20 @@ main {
   text-align: center;
 }
 
-
 h2 {
   margin: 0;
   padding: 0;
 }
 
-.btn-tertiary{
+.btn-primary {
+  color: #333;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+.btn-tertiary {
   color: #555;
   background-color: transparent;
   font-size: 14px;
@@ -28,7 +35,7 @@ h2 {
   border: none;
   outline: none;
 }
-.btn-tertiary:focus{
+.btn-tertiary:focus {
   outline: none;
 }
 
@@ -48,6 +55,10 @@ h2 {
 }
 .text-center {
   text-align: center;
+}
+.text-small {
+  font-size: 8px;
+  color: #555;
 }
 
 /* spacing  */
@@ -99,6 +110,38 @@ h2 {
   margin-right: 10px;
 }
 
+.p-10 {
+  padding: 10px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.pr-10 {
+  padding-right: 10px;
+}
+
+.p-5 {
+  padding: 5px;
+}
+.pt-5 {
+  padding-top: 5px;
+}
+.pb-5 {
+  padding-bottom: 5px;
+}
+.pl-5 {
+  padding-left: 5px;
+}
+.pr-5 {
+  padding-right: 5px;
+}
+
 /* display */
 .inline-block {
   display: inline-block;
@@ -114,6 +157,6 @@ h2 {
   justify-content: center;
 }
 
-.flex-space-between{
+.flex-space-between {
   justify-content: space-between;
 }

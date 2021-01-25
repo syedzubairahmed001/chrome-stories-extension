@@ -1,24 +1,29 @@
 {
   "manifest_version": 2,
-
   "name": "Chrome Stories",
   "description": "Share and watch stories from people around the world while you browse!",
   "version": "0.0.1",
-
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "View Stories"
   },
   "icons": {
-    "16": "logo.png"
+    "16": "logo_50x50.png",
+    "48": "logo_50x50.png",
+    "128": "logo_50x50.png"
   },
-  "content_security_policy": "script-src 'self' 'sha256-mQ7lEWIKEdk47002sW8jU/+tAkF3UYhZNRJA/zS51YM=' https://apis.google.com; default-src 'self' https://*.googleusercontent.com/ https://www.googleapis.com; img-src https://*.googleusercontent.com/ 'self' data:; ",
-    "permissions": [
+  "content_security_policy": "script-src 'self'  https://apis.google.com/  https://www.gstatic.com/ https://*.firebaseio.com/  'sha256-5NxDatoJIdGCgozuCPSmraW7wILrxvFL37gfAS17+48=' https://securetoken.googleapis.com https://accounts.google.com https://chrome-stories-a332d.firebaseapp.com; default-src 'self' https://*.googleusercontent.com/ https://www.googleapis.com/ ; img-src https://*.googleusercontent.com/ 'self' data:; object-src 'self'; frame-src 'self' https://chrome-stories-a332d.firebaseapp.com/ ",
+  "permissions": [
+    "identity"
   ],
-  "content_scripts": [{
-    "js": [ "content.bundle.js" ],
-    "matches": [
-     "<all_urls>"
-    ]
- } ]
+  "content_scripts": [
+    {
+      "js": [
+        "content.bundle.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

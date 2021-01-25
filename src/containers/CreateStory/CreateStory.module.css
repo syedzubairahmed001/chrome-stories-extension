@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    to right bottom,
+    #8a2387,
+    #e94057,
+    #f27121
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.storyInput {
+  max-width: 90%;
+  min-width: 90%;
+  max-height: 90%;
+  min-height: 90%;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 18px;
+}
+.storyInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.storyInput:focus {
+  outline: none;
+}
+
+.closeBtn {
+  color: #ddd;
+  font-weight: bold;
+}
+
+.close {
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 15px;
+  width: 2px;
+  background-color: #ddd;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
