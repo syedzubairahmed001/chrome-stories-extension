@@ -6,50 +6,84 @@ import { signInWithGoogle, auth } from "../../services/firebase";
 import { UserContext } from "../../context/userContext";
 import { GlobalContext } from "../../context/globalContext";
 import pages from "../../constants/pages";
+import axios from "../../services/axios";
 
 const GoogleSigninBtn = (props) => {
   const { userContext, setUserContext } = React.useContext(UserContext);
   const { globalContext, setGlobalContext } = React.useContext(GlobalContext);
-  const onSigninClick = () => {
-    setGlobalContext((prev) => ({ ...prev, loading: true }));
-    signInWithGoogle()
-      .then((res) => {
-        setGlobalContext((prev) => ({
-          ...prev,
-          loading: false,
-          currentPage: pages.Home,
-        }));
-        console.log(res);
-        auth.currentUser
-          .getIdToken()
-          .then((idToken) => {
-            console.log(idToken);
-            localStorage.setItem("id-token", idToken);
-          })
-          .catch((idTokenErr) => {
-            console.log(idTokenErr);
-          });
-        if (res.user) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify(JSON.parse(JSON.stringify(res.user)))
-          );
-          console.log(JSON.parse(localStorage.getItem("user")));
+  const onSigninClick = async () => {
+    try {
+      setGlobalContext((prev) => ({ ...prev, loading: true }));
+      const googleRes = await signInWithGoogle();
+      const googleResJson = JSON.parse(JSON.stringify(googleRes.user));
+      console.log(googleResJson);
+      const refreshToken = googleResJson.stsTokenManager.refreshToken;
+      const idToken = googleResJson.stsTokenManager.accessToken;
+      const apiKey = googleResJson.stsTokenManager.apiKey;
+      const idExp = googleResJson.stsTokenManager.expirationTime;
+      console.log(idToken);
+      localStorage.setItem("id-token", idToken);
+      localStorage.setItem("id-exp", idExp);
+      localStorage.setItem("r", refreshToken);
+      localStorage.setItem("ak", apiKey);
+      let userData = await axios.get("/getUser", {
+        headers: {
+          Authorization: idToken,
+        },
+      });
+      if (userData.data) {
+        let userDataJson = userData.data.data._fieldsProto;
+        if (!userDataJson) {
           setUserContext((prev) => ({
             ...prev,
             user: {
               ...prev.user,
-              name: res.user.displayName,
-              email: res.user.email,
-              profilePicture: res.user.photoURL,
+              name: googleResJson.displayName,
+              email: googleResJson.email,
+              profilePicture: googleResJson.photoUrl,
+              story: "",
             },
           }));
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              name: googleResJson.displayName,
+              email: googleResJson.email,
+              profilePicture: googleResJson.photoUrl,
+              story: "",
+            })
+          );
+        } else {
+          setUserContext((prev) => ({
+            ...prev,
+            user: {
+              ...prev.user,
+              name: userDataJson.name.stringValue,
+              email: userDataJson.email.stringValue,
+              profilePicture: userDataJson.photoUrl.stringValue,
+              story: userDataJson.story.stringValue,
+            },
+          }));
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              name: userDataJson.name.stringValue,
+              email: userDataJson.email.stringValue,
+              profilePicture: userDataJson.photoUrl.stringValue,
+              story: userDataJson.story.stringValue,
+            })
+          );
         }
-      })
-      .catch((err) => {
-        setGlobalContext((prev) => ({ ...prev, loading: true }));
-        console.log(err);
-      });
+      }
+      setGlobalContext((prev) => ({
+        ...prev,
+        loading: false,
+        currentPage: pages.Home,
+      }));
+    } catch (err) {
+      setGlobalContext((prev) => ({ ...prev, loading: false }));
+      console.log(err);
+    }
   };
   return (
     <div {...props} className={`${styles.button}`} onClick={onSigninClick}>

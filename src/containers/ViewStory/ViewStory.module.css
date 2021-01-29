@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 400px;
+  height: 440px;
   background-repeat: no-repeat;
   background: linear-gradient(
     to right bottom,
@@ -9,21 +9,22 @@
     #f27121
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.storyInput {
+
+.header {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+.storyText {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   max-width: 90%;
-  min-width: 90%;
-  max-height: 90%;
-  min-height: 90%;
+  max-height: 85%;
+  overflow-y: auto;
   display: inline-block;
   background-color: transparent;
   border: none;
   color: #fff;
   font-family: inherit;
   font-size: 18px;
-}
-.storyInput::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-.storyInput:focus {
-  outline: none;
 }

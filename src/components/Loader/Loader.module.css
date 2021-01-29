@@ -4,9 +4,17 @@
   left: 0px;
   width: 100%;
   height: 5px;
-  background: linear-gradient(to right, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(
+    to right,
+    #FFC837,
+    #ff512f,
+    #dd2476,
+    #514a9d,
+    #24c6dc,
+    #93EDC7
+  );
   background-size: 400% 400%;
-  animation: animate 2s ease infinite;
+  animation: animate 2s ease infinite alternate;
 }
 
 @keyframes animate {

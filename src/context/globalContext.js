@@ -8,6 +8,10 @@ export const GlobalContextProvider = (props) => {
   const [globalContext, setGlobalContext] = React.useState({
     currentPage: pages.Home,
     loading: false,
+    stories: [],
+    currentStoryIndex: null,
+    currentStoriesOffset: 0,
+    currentStoriesLimit: 0,
   });
 
   return (

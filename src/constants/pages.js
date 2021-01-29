@@ -3,6 +3,7 @@ const pages = {
   Auth: "Auth",
   ViewStory: "ViewStory",
   CreateStory: "CreateStory",
+  About: "About",
 };
 
 export default pages;

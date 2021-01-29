@@ -5,10 +5,13 @@ import "./App.css";
 import Header from "./components/Header/Header.component";
 import Auth from "./containers/Auth/Auth.container";
 import Home from "./containers/Home/Home.container";
+import About from "./containers/About/About.container";
 import CreateStory from "./containers/CreateStory/CreateStory.container";
+import ViewStory from "./containers/ViewStory/ViewStory.component";
 import pages from "./constants/pages";
 import firebase from "./services/firebase";
 import Loader from "./components/Loader/Loader.compoent";
+import SetUser from "./components/SetUser/SetUser.component";
 
 import { UserContext } from "./context/userContext";
 import { GlobalContext, GlobalContextProvider } from "./context/globalContext";
@@ -25,20 +28,22 @@ function App() {
       case pages.Home:
         return <Home />;
       case pages.Auth:
-        return (
-          <div className="flex-center h-100">
-            <Auth />
-          </div>
-        );
+        return <Auth />;
+      case pages.About:
+        return <About />;
       case pages.CreateStory:
         return <CreateStory />;
+      case pages.ViewStory:
+        return <ViewStory />;
       default:
         return <Home />;
     }
   };
   return (
     <div className="App">
-      <Header />
+      <SetUser />
+      {/* <Header /> */}
+      {globalContext.currentPage === pages.ViewStory ? "" : <Header />}
       {globalContext.loading && <Loader />}
       <main>{renderPage()}</main>
     </div>

@@ -7,21 +7,57 @@ import styles from "./Header.module.css";
 import pages from "../../constants/pages";
 
 const Header = (props) => {
-  const { userContext, setUserContext } = React.useContext(UserContext);
+  const { userContext, setUserContext, resetUserContext } = React.useContext(
+    UserContext
+  );
+  const [menuActive, setMenuActive] = React.useState(false);
   const { globalContext, setGlobalContext } = React.useContext(GlobalContext);
+  React.useEffect(() => {
+    setMenuActive(false);
+  }, []);
 
   const onLoginClick = () => {
-    console.log({ globalContext });
     setGlobalContext((prev) => ({ ...prev, currentPage: pages.Auth }));
   };
   const onProfileClick = () => {
-    console.log({ globalContext });
-    setGlobalContext((prev) => ({ ...prev, currentPage: pages.CreateStory }));
+    setMenuActive((prev) => !prev);
+    // setGlobalContext((prev) => ({ ...prev, currentPage: pages.CreateStory }));
+  };
+  const logout = () => {
+    setGlobalContext((prev) => ({ ...prev, currentPage: pages.HOME }));
+    const localUser = JSON.parse(localStorage.getItem("user"));
+    if (localUser && localUser.story) {
+      const storiesToSave = {
+        _fieldsProto: {
+          email: {
+            stringValue: localUser.email,
+          },
+          name: {
+            stringValue: localUser.name,
+          },
+          photoUrl: {
+            stringValue: localUser.profilePicture,
+          },
+          story: {
+            stringValue: localUser.story,
+          },
+        },
+      };
+      setGlobalContext((prev) => ({
+        ...prev,
+        stories: [...prev.stories, storiesToSave],
+      }));
+    }
+    localStorage.removeItem("user");
+    localStorage.removeItem("id-token");
+    localStorage.removeItem("r");
+    localStorage.removeItem("id-exp");
+    resetUserContext();
   };
   const userProfilePicture = userContext.user.profilePicture;
   return (
     <header className={`flex flex-space-between flex-center ${styles.header}`}>
-      <div className={`flex flex-center `}>
+      <div className={`flex flex-center  pl-5`}>
         <img src={logo} alt="logo" className={`${styles.logo}`} />
         <div className={`ml-5`}>
           <h3 className={`${styles.heading} text-secondary `}>Stories</h3>
@@ -30,14 +66,41 @@ const Header = (props) => {
           </p> */}
         </div>
       </div>
-      <div>
+      <div className="pr-5">
         {userProfilePicture ? (
-          <img
-            className={`${styles.profilePicture}`}
-            src={userProfilePicture}
-            alt="profile"
-            onClick={onProfileClick}
-          />
+          <div className={` menu-wrapper`}>
+            <ul className={` ${menuActive ? "active" : ""} menu-list`}>
+              <li
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
+                  setGlobalContext((prev) => ({
+                    ...prev,
+                    currentPage: pages.CreateStory,
+                  }));
+                }}
+              >
+                My Story
+              </li>
+              <li
+                onClick={() => {
+                  setMenuActive((prev) => !prev);
+                  setGlobalContext((prev) => ({
+                    ...prev,
+                    currentPage: pages.About,
+                  }));
+                }}
+              >
+                About
+              </li>
+              <li onClick={logout}>Logout</li>
+            </ul>
+            <img
+              className={`${styles.profilePicture}`}
+              src={userProfilePicture}
+              alt="profile"
+              onClick={onProfileClick}
+            />
+          </div>
         ) : (
           <div className={`btn-tertiary`} onClick={onLoginClick}>
             Login

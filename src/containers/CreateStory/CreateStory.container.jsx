@@ -3,14 +3,20 @@ import React from "react";
 import axios from "../../services/axios";
 import styles from "./CreateStory.module.css";
 import { GlobalContext } from "../../context/globalContext";
+import { UserContext } from "../../context/userContext";
 import pages from "../../constants/pages";
+import { getAccessToken } from "../../helpers/auth";
 
 const CreateStory = (props) => {
   const textareaRef = React.useRef();
+  const { userContext, setUserContext } = React.useContext(UserContext);
+  const [storyText, setStoryText] = React.useState("");
   React.useEffect(() => {
+    if (userContext.user.story) {
+      setStoryText(userContext.user.story);
+    }
     textareaRef.current.focus();
   }, []);
-  const [storyText, setStoryText] = React.useState("");
   const { globalContext, setGlobalContext } = React.useContext(GlobalContext);
 
   const handleTextChange = (e) => {
@@ -19,18 +25,36 @@ const CreateStory = (props) => {
       setStoryText(text);
     }
   };
-  const handlePostStory = (e) => {
-    const text = storyText;
+  const handlePostStory = async (e) => {
     setGlobalContext((prev) => ({ ...prev, loading: true }));
+    const accessToken = await getAccessToken();
+    const text = storyText;
     axios
-      .post("/createStory", { text: text })
+      .post(
+        "/createStory",
+        { text: text },
+        { headers: { Authorization: accessToken } }
+      )
       .then((res) => {
-        setGlobalContext((prev) => ({ ...prev, loading: false }));
-        console.log(res);
+        setGlobalContext((prev) => ({
+          ...prev,
+          loading: false,
+          currentPage: pages.Home,
+        }));
+        const localUser = JSON.parse(localStorage.getItem("user"));
+        if (localUser) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...localUser, story: storyText })
+          );
+        }
+        setUserContext((prev) => ({
+          ...prev,
+          user: { ...prev.user, story: storyText },
+        }));
       })
       .catch((err) => {
         setGlobalContext((prev) => ({ ...prev, loading: false }));
-        console.log(err);
       });
   };
   const handleloseBtnClick = () => {
@@ -42,16 +66,16 @@ const CreateStory = (props) => {
         className={`${styles.header} flex flex-space-between pt-10 pl-10 pr-10 pb-10`}
       >
         <button
-          className={`btn-tertiary ${styles.closeBtn}`}
+          className={`btn-tertiary closeBtn`}
           onClick={handleloseBtnClick}
         >
-          <div className={`btn-tertiary ${styles.close}`}></div>
+          <div className={`btn-tertiary close`}></div>
         </button>
         <button className="btn-primary" onClick={handlePostStory}>
           Post
         </button>
       </div>
-      <div>
+      <div className={`pl-10 pr-10`}>
         <textarea
           type="text"
           rows="14"
