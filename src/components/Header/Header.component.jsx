@@ -19,7 +19,7 @@ const Header = (props) => {
   const onLoginClick = () => {
     setGlobalContext((prev) => ({ ...prev, currentPage: pages.Auth }));
   };
-  const onProfileClick = () => {
+  const handleMenuOpen = () => {
     setMenuActive((prev) => !prev);
     // setGlobalContext((prev) => ({ ...prev, currentPage: pages.CreateStory }));
   };
@@ -67,9 +67,9 @@ const Header = (props) => {
         </div>
       </div>
       <div className="pr-5">
-        {userProfilePicture ? (
-          <div className={` menu-wrapper`}>
-            <ul className={` ${menuActive ? "active" : ""} menu-list`}>
+        <div className={` menu-wrapper`}>
+          <ul className={` ${menuActive ? "active" : ""} menu-list`}>
+            {userProfilePicture && (
               <li
                 onClick={() => {
                   setMenuActive((prev) => !prev);
@@ -81,31 +81,38 @@ const Header = (props) => {
               >
                 My Story
               </li>
-              <li
-                onClick={() => {
-                  setMenuActive((prev) => !prev);
-                  setGlobalContext((prev) => ({
-                    ...prev,
-                    currentPage: pages.About,
-                  }));
-                }}
-              >
-                About
-              </li>
-              <li onClick={logout}>Logout</li>
-            </ul>
+            )}
+            <li
+              onClick={() => {
+                setMenuActive((prev) => !prev);
+                setGlobalContext((prev) => ({
+                  ...prev,
+                  currentPage: pages.About,
+                }));
+              }}
+            >
+              About
+            </li>
+            {userProfilePicture && <li onClick={logout}>Logout</li>}
+          </ul>
+          {userProfilePicture ? (
             <img
               className={`${styles.profilePicture}`}
               src={userProfilePicture}
               alt="profile"
-              onClick={onProfileClick}
+              onClick={handleMenuOpen}
             />
-          </div>
-        ) : (
-          <div className={`btn-tertiary`} onClick={onLoginClick}>
-            Login
-          </div>
-        )}
+          ) : (
+            <div className={`flex align-center`}>
+              <div className={`btn-tertiary mr-5`} onClick={onLoginClick}>
+                Login
+              </div>
+              <span className={styles.menuIcon} onClick={handleMenuOpen}>
+                &#8942;
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

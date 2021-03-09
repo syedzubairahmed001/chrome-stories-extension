@@ -22,3 +22,8 @@
   cursor: pointer;
   user-select: none;
 }
+.menuIcon{
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+}

@@ -23,16 +23,16 @@ const Auth = (props) => {
       </div>
       <div className="flex-1 mt-10 flex-column">
         <div className={`text-center mb-5`}>
-          <img src={logo} alt="logo" className={`${styles.logo}`} />
-          <h2 className={`text-primary font-big`}>Stories in Browser!</h2>
+          <img src={logo} alt="logo" className={`${styles.logo} animate--slide-up`} />
+          <h2 className={`text-primary font-big animate--slide-up a-delay-1`}>Stories in Browser!</h2>
         </div>
         <div className={`text-center`}>
-          <p className={`text-secondary font-small`}>
+          <p className={`text-secondary font-small animate--slide-up a-delay-2`}>
             Share and watch stories from people around the world while you
             browse!
           </p>
         </div>
-        <div className={`flex-center`}>
+        <div className={`flex-center animate--slide-up a-delay-3`}>
           <GoogleSigninBtn />
         </div>
       </div>

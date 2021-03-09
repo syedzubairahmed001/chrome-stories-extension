@@ -17,7 +17,7 @@ const ViewStory = (props) => {
   };
 
   return (
-    <div className={`${styles.container} `}>
+    <div className={`${styles.container} animate--slide-up`}>
       <div className={`flex flex-center flex-space-between p-5 ${styles.header}`}>
         <div className={`flex flex-center`}>
           <img src={photoUrl} alt="profile" className={`round-small `} />

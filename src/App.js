@@ -18,12 +18,10 @@ import { GlobalContext, GlobalContextProvider } from "./context/globalContext";
 function App() {
   React.useEffect(() => {
     const user = firebase.auth().currentUser;
-    console.log(user);
   }, []);
   const { globalContext } = React.useContext(GlobalContext);
   const renderPage = () => {
     const currentPage = globalContext.currentPage;
-    console.log(globalContext.currentPage);
     switch (currentPage) {
       case pages.Home:
         return <Home />;

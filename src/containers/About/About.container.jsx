@@ -22,8 +22,8 @@ const About = (props) => {
       </div>
       <div className="p-10 flex flex-column flex-1">
         <div className="text-center">
-          <img src={logo} alt="logo" className="logo-big" />
-          <p className="text-primary font-small font-bold  mb-10 mt-10">
+          <img src={logo} alt="logo" className="logo-big animate--slide-up" />
+          <p className="text-primary font-small font-bold  mb-10 mt-10 animate--slide-up a-delay-1">
             Created with ❤️ by <br />
             <a
               href="https://twitter.com/_syed_zubair"
@@ -34,7 +34,7 @@ const About = (props) => {
               Syed Zubair Ahmed
             </a>
           </p>
-          <p className="text-secondary font-medium font-vsmall">
+          <p className="text-secondary font-medium font-vsmall animate--slide-up a-delay-2">
             Got any suggestions or feedback? Reach out to me on{" "}
             <a
               href="https://twitter.com/_syed_zubair"

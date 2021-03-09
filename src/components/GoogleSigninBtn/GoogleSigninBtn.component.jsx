@@ -16,12 +16,10 @@ const GoogleSigninBtn = (props) => {
       setGlobalContext((prev) => ({ ...prev, loading: true }));
       const googleRes = await signInWithGoogle();
       const googleResJson = JSON.parse(JSON.stringify(googleRes.user));
-      console.log(googleResJson);
       const refreshToken = googleResJson.stsTokenManager.refreshToken;
       const idToken = googleResJson.stsTokenManager.accessToken;
       const apiKey = googleResJson.stsTokenManager.apiKey;
       const idExp = googleResJson.stsTokenManager.expirationTime;
-      console.log(idToken);
       localStorage.setItem("id-token", idToken);
       localStorage.setItem("id-exp", idExp);
       localStorage.setItem("r", refreshToken);
