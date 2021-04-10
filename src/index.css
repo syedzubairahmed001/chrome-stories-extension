@@ -8,6 +8,7 @@ body {
   width: 300px;
   height: 400px;
   border-radius: 20px;
+  overflow: hidden;
 }
 *{
   margin: 0;
@@ -16,4 +17,24 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(221, 221, 221, 0.8);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(190, 190, 190, 0.8);
 }

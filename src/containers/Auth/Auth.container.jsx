@@ -24,7 +24,7 @@ const Auth = (props) => {
       <div className="flex-1 mt-10 flex-column">
         <div className={`text-center mb-5`}>
           <img src={logo} alt="logo" className={`${styles.logo} animate--slide-up`} />
-          <h2 className={`text-primary font-big animate--slide-up a-delay-1`}>Stories in Browser!</h2>
+          <h2 className={`text-primary font-big animate--slide-up a-delay-1 `}>Stories in Browser!</h2>
         </div>
         <div className={`text-center`}>
           <p className={`text-secondary font-small animate--slide-up a-delay-2`}>
@@ -32,7 +32,7 @@ const Auth = (props) => {
             browse!
           </p>
         </div>
-        <div className={`flex-center animate--slide-up a-delay-3`}>
+        <div className={`flex-center animate--slide-up a-delay-3 `}>
           <GoogleSigninBtn />
         </div>
       </div>

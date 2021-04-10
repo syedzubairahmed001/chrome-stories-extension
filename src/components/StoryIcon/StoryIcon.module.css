@@ -1,5 +1,5 @@
 .container {
-  margin: 5px;
+  margin: 7px;
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -11,10 +11,11 @@
 .imageWrapper {
   width: 50px;
   height: 50px;
-  padding: 4px;
+  margin: 2px;
   position: relative;
-  /* border-radius: 50%;
-  background: linear-gradient(to right, red, purple); */
+  border: 2px solid #fff;
+  border-radius: 50%;
+  /* background: linear-gradient(to right, red, purple); */
 }
 .imageWrapper::after {
   content: "";
@@ -23,10 +24,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  width: 57px;
-  height: 57px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  background: linear-gradient(to left, #8a2387, #e94057, #f27121);
+  background: linear-gradient(to right bottom, #7F00FF, #E100FF);;
 }
 .yourStoryWrapper::after {
   background: linear-gradient(to left, #ccc, #ccc);
@@ -42,7 +43,7 @@
 .title {
   font-size: 13px;
   display: inline-block;
-  max-width: 80px;
+  max-width: 60px;
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;

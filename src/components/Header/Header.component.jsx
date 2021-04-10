@@ -68,18 +68,18 @@ const Header = (props) => {
       </div>
       <div className="pr-5">
         <div className={` menu-wrapper`}>
-          <ul className={` ${menuActive ? "active" : ""} menu-list`}>
+          <ul className={` ${menuActive ? "active" : ""} menu-list animate--slide-up`}>
             {userProfilePicture && (
               <li
                 onClick={() => {
                   setMenuActive((prev) => !prev);
                   setGlobalContext((prev) => ({
                     ...prev,
-                    currentPage: pages.CreateStory,
+                    currentPage: pages.Profile,
                   }));
                 }}
               >
-                My Story
+                Profile
               </li>
             )}
             <li

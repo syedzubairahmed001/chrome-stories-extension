@@ -15,29 +15,31 @@ const StoryIcon = (props) => {
       setGlobalContext((prev) => ({ ...prev, currentPage: pages.CreateStory }));
     } else {
       setStoryLoading(true);
-      setTimeout(() => {
+      // setTimeout(() => {
         setGlobalContext((prev) => ({
           ...prev,
           currentStoryIndex: index,
           currentPage: pages.ViewStory,
         }));
-      }, 500);
+      // }, 500);
     }
   };
   return (
     <>
       <div
-        className={`text-center inline-block ${styles.container} `}
+        className={`text-center inline-block click-effect ${styles.container} ${props.className}`}
         onClick={handleStoryClick}
       >
-        <div
-          className={`${styles.imageWrapper} ${
-            storyLoading ? styles.loading : ""
-          } ${props.yourStory ? styles.yourStoryWrapper : ""}`}
-        >
-          <img className={`${styles.image}`} src={photoUrl} alt="profile" />
+        <div className="click-effect">
+          <div
+            className={`${styles.imageWrapper} ${
+              storyLoading ? styles.loading : ""
+            } ${props.yourStory ? styles.yourStoryWrapper : ""}`}
+          >
+            <img className={`${styles.image}`} src={photoUrl} alt="profile" />
+          </div>
+          <p className={`${styles.title}`}>{title}</p>
         </div>
-        <p className={`${styles.title}`}>{title}</p>
       </div>
     </>
   );

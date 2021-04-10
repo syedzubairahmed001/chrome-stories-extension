@@ -4,6 +4,7 @@ const pages = {
   ViewStory: "ViewStory",
   CreateStory: "CreateStory",
   About: "About",
+  Profile: "Profile"
 };
 
 export default pages;

@@ -40,6 +40,10 @@ const GoogleSigninBtn = (props) => {
               email: googleResJson.email,
               profilePicture: googleResJson.photoUrl,
               story: "",
+              themeId: 0,
+              bio: "",
+              twitterHandle: "",
+              instagramHandle: "",
             },
           }));
           localStorage.setItem(
@@ -49,6 +53,10 @@ const GoogleSigninBtn = (props) => {
               email: googleResJson.email,
               profilePicture: googleResJson.photoUrl,
               story: "",
+              themeId: 0,
+              bio: "",
+              twitterHandle: "",
+              instagramHandle: "",
             })
           );
         } else {
@@ -60,6 +68,11 @@ const GoogleSigninBtn = (props) => {
               email: userDataJson.email.stringValue,
               profilePicture: userDataJson.photoUrl.stringValue,
               story: userDataJson.story.stringValue,
+              themeId: (userDataJson.themeId && userDataJson.themeId.stringValue) || 0,
+              bio: (userDataJson.bio && userDataJson.bio.stringValue) || "",
+              twitterHandle: (userDataJson.twitterHandle && userDataJson.twitterHandle.stringValue) || "",
+              instagramHandle: (userDataJson.instagramHandle && userDataJson.instagramHandle.stringValue) || "",
+
             },
           }));
           localStorage.setItem(
@@ -69,6 +82,10 @@ const GoogleSigninBtn = (props) => {
               email: userDataJson.email.stringValue,
               profilePicture: userDataJson.photoUrl.stringValue,
               story: userDataJson.story.stringValue,
+              themeId: (userDataJson.themeId && userDataJson.themeId.stringValue) || 0,
+              bio: (userDataJson.bio && userDataJson.bio.stringValue) || "",
+              twitterHandle: (userDataJson.twitterHandle && userDataJson.twitterHandle.stringValue) || "",
+              instagramHandle: (userDataJson.instagramHandle && userDataJson.instagramHandle.stringValue) || "",
             })
           );
         }
@@ -84,7 +101,7 @@ const GoogleSigninBtn = (props) => {
     }
   };
   return (
-    <div {...props} className={`${styles.button}`} onClick={onSigninClick}>
+    <div {...props} className={`${styles.button} click-effect`} onClick={onSigninClick}>
       <img className={`${styles.logo}`} src={google_logo} alt="google signin" />
       <p className={`${styles.text}`}>Sign in with Google</p>
     </div>

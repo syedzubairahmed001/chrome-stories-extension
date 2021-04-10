@@ -14,10 +14,14 @@ const Home = (props) => {
   const [message, setMessage] = React.useState(null);
 
   React.useEffect(() => {
+    let localUser = JSON.parse(localStorage.getItem("user"));
     if (globalContext.stories.length === 0) {
+      if(localUser && localUser.themeId){
+
+        setUserContext((prev) => ({ ...prev, user: {...prev.user, themeId: localUser.themeId} }));
+      }
       getStories();
     } else {
-      let localUser = JSON.parse(localStorage.getItem("user"));
       if (localUser && localUser.email) {
         const storiesToSave = globalContext.stories.filter((e) => {
           return e._fieldsProto.email.stringValue !== localUser.email;
@@ -86,11 +90,16 @@ const Home = (props) => {
   };
   const renderStories = () => {
     const stories = globalContext.stories || [];
-
+     let delay = 1;
     const storiesCards = stories.map((e, i) => {
       const story = e._fieldsProto;
+      if(i%5 === 0){
+        delay++
+      }
+      console.log({delay}, i%3 === 0)
       return (
         <StoryIcon
+        className={`animate--slide-up a-delay-${delay}`}
           key={i}
           title={story.name.stringValue}
           photoUrl={story.photoUrl.stringValue}

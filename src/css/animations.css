@@ -1,0 +1,80 @@
+.click-effect {
+  transition: transform 0.3s;
+}
+.click-effect:active {
+  transform: scale(0.9);
+}
+
+.animate--slide-up {
+  animation: animate--slide-up 0.2s both;
+}
+@keyframes animate--slide-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate--slide-down {
+  animation: animate--slide-down 0.2s both;
+}
+@keyframes animate--slide-down {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate--fade-in {
+  animation: animate--fade-in 0.2s both;
+}
+@keyframes animate--fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.a-delay-1 {
+  animation-delay: 0.1s;
+}
+.a-delay-2 {
+  animation-delay: 0.2s;
+}
+.a-delay-3 {
+  animation-delay: 0.3s;
+}
+.a-delay-4 {
+  animation-delay: 0.4s;
+}
+.a-delay-5 {
+  animation-delay: 0.5s;
+}
+.a-delay-6 {
+  animation-delay: 0.6s;
+}
+.a-delay-7 {
+  animation-delay: 0.7s;
+}
+.a-delay-8 {
+  animation-delay: 0.8s;
+}
+.a-delay-9 {
+  animation-delay: 0.9s;
+}
+.a-delay-10 {
+  animation-delay: 1s;
+}
+.a-delay-11 {
+  animation-delay: 2s;
+}

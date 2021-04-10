@@ -1,0 +1,19 @@
+.container{
+    text-align: center;
+    padding: 10px;
+}
+
+.profilePicture{
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+}
+
+.title{
+    font-size: 15px ;
+}
+.bio{
+    font-size: 13px ;
+}
+
+

@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 250px;
+  background-color: #fff;
+  z-index: 9999;
+  padding: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  height: 250px;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  width: 100%;
+}

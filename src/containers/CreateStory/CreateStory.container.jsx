@@ -6,14 +6,20 @@ import { GlobalContext } from "../../context/globalContext";
 import { UserContext } from "../../context/userContext";
 import pages from "../../constants/pages";
 import { getAccessToken } from "../../helpers/auth";
+import storyColors from '../../constants/storyColors';
+import BgColorChanger from "./bgColorChanger/bgColorChanger.component";
 
 const CreateStory = (props) => {
   const textareaRef = React.useRef();
   const { userContext, setUserContext } = React.useContext(UserContext);
   const [storyText, setStoryText] = React.useState("");
+  const [colorClass, setColorClass] = React.useState(0);
   React.useEffect(() => {
     if (userContext.user.story) {
       setStoryText(userContext.user.story);
+    }
+    if (userContext.user.themeId) {
+      setColorClass( Number(userContext.user.themeId));
     }
     textareaRef.current.focus();
   }, []);
@@ -32,7 +38,7 @@ const CreateStory = (props) => {
     axios
       .post(
         "/createStory",
-        { text: text },
+        { text: text, themeId: colorClass.toString() },
         { headers: { Authorization: accessToken } }
       )
       .then((res) => {
@@ -45,12 +51,12 @@ const CreateStory = (props) => {
         if (localUser) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ ...localUser, story: storyText })
+            JSON.stringify({ ...localUser, story: storyText, themeId: colorClass.toString() })
           );
         }
         setUserContext((prev) => ({
           ...prev,
-          user: { ...prev.user, story: storyText },
+          user: { ...prev.user, story: storyText, themeId: colorClass.toString() },
         }));
       })
       .catch((err) => {
@@ -60,10 +66,18 @@ const CreateStory = (props) => {
   const handleloseBtnClick = () => {
     setGlobalContext((prev) => ({ ...prev, currentPage: pages.Home }));
   };
+  const changeBackground = () => {
+    if(colorClass < storyColors.length -1){
+
+      setColorClass(prev => prev + 1)
+    }else {
+      setColorClass(0)
+    }
+  }
   return (
-    <div className={`${styles.container}`}>
+    <div className={`${styles.container} overflow-hidden ${"storyColor" + colorClass}`}>
       <div
-        className={`${styles.header} flex flex-space-between pt-10 pl-10 pr-10 pb-10`}
+        className={`${styles.header} flex flex-space-between pt-10 pl-10 pr-10 pb-10  animate--slide-up`}
       >
         <button
           className={`btn-tertiary closeBtn`}
@@ -71,11 +85,14 @@ const CreateStory = (props) => {
         >
           <div className={`btn-tertiary close`}></div>
         </button>
-        <button className="btn-primary" onClick={handlePostStory}>
-          Post
-        </button>
+        <div className="flex">
+          <BgColorChanger onClick={changeBackground} currentColorId={colorClass} />
+          <button className="btn-primary ml-10 click-effect" onClick={handlePostStory}>
+            Post
+          </button>
+        </div>
       </div>
-      <div className={`pl-10 pr-10`}>
+      <div className={`pl-10 pr-10 animate--slide-up a-delay-1`}>
         <textarea
           type="text"
           rows="14"
