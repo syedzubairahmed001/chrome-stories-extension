@@ -12,7 +12,7 @@
     "48": "logo_50x50.png",
     "128": "logo_50x50.png"
   },
-  "content_security_policy": "script-src 'self'  https://apis.google.com/  https://www.gstatic.com/ https://*.firebaseio.com/  'sha256-mMqzbFSkWKCockIcbzM8fTS6GO/BEkBlUyIG+gZDsgQ=' https://securetoken.googleapis.com https://accounts.google.com https://chrome-stories-a332d.firebaseapp.com; default-src 'self' https://*.googleusercontent.com/ https://www.googleapis.com/ https://us-central1-chrome-stories-a332d.cloudfunctions.net https://securetoken.googleapis.com; img-src https://*.googleusercontent.com/ 'self' data:; object-src 'self'; frame-src 'self' https://chrome-stories-a332d.firebaseapp.com/ ",
+  "content_security_policy": "script-src 'self'  https://apis.google.com/  https://www.gstatic.com/ https://*.firebaseio.com/  'sha256-Fr8BSUkRf1cwctRqq5G02WwqTSSk4ZkMzcSMV1j4p1c=' https://securetoken.googleapis.com https://accounts.google.com https://chrome-stories-a332d.firebaseapp.com; default-src 'self' https://*.googleusercontent.com/ https://www.googleapis.com/ https://us-central1-chrome-stories-a332d.cloudfunctions.net https://securetoken.googleapis.com; img-src https://*.googleusercontent.com/ 'self' data:; object-src 'self'; frame-src 'self' https://chrome-stories-a332d.firebaseapp.com/ ",
   "permissions": [],
   "content_scripts": [
     {

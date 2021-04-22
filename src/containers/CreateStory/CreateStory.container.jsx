@@ -80,7 +80,7 @@ const CreateStory = (props) => {
         className={`${styles.header} flex flex-space-between pt-10 pl-10 pr-10 pb-10  animate--slide-up`}
       >
         <button
-          className={`btn-tertiary closeBtn`}
+          className={`btn-tertiary closeBtn click-effect`}
           onClick={handleloseBtnClick}
         >
           <div className={`btn-tertiary close`}></div>

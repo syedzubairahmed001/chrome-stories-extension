@@ -13,7 +13,7 @@ const Auth = (props) => {
     <div className="flex flex-column h-100">
       <div className="p-10">
         <button
-          className={`btn-tertiary closeBtn`}
+          className={`btn-tertiary closeBtn click-effect`}
           onClick={() =>
             setGlobalContext((prev) => ({ ...prev, currentPage: pages.Home }))
           }

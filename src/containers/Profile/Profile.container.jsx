@@ -72,7 +72,7 @@ const Profile = (props) => {
     <div className={styles.container}>
       <div className="text-left">
         <button
-          className={`btn-tertiary closeBtn`}
+          className={`btn-tertiary closeBtn click-effect`}
           onClick={() =>
             setGlobalContext((prev) => ({ ...prev, currentPage: pages.Home }))
           }

@@ -11,27 +11,32 @@
   font-weight: bold;
 }
 .link-1 {
-  color: #E100FF;
+  color: #e100ff;
   text-decoration: none;
   transition: background 0.3s;
 }
 .link-1:hover {
-  background: linear-gradient(to left, #7F00FF, #E100FF);
+  background: linear-gradient(to left, #7f00ff, #e100ff);
   color: #fff;
 }
 
+.link-2 {
+  color: #e100ff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
 
 h2 {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  .text-primary {
-    color: #333;
-  }
-  .text-secondary {
-    color: #555;
-  }
-  .text-light {
-    color: #fff;
-  }
+.text-primary {
+  color: #333;
+}
+.text-secondary {
+  color: #555;
+}
+.text-light {
+  color: #fff;
+}

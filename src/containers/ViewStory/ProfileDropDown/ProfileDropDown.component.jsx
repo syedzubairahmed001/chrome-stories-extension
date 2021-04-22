@@ -10,7 +10,10 @@ const ProfileDropDown = (props) => {
       <div className={`${styles.wrapper}`}>
         <ProfileView {...props.data} />
         <div className={`flex flex-center ${styles.arrow} `}>
-          <div onClick={props.onCloseClick} className="cursor-pointer">
+          <div
+            onClick={props.onCloseClick}
+            className="cursor-pointer click-effect"
+          >
             <Arrow />
           </div>
         </div>

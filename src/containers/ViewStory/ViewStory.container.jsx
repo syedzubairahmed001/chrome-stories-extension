@@ -42,8 +42,8 @@ const ViewStory = (props) => {
     setProfileView(true);
   };
   const handleCloseClick = () => {
-    setProfileView(false)
-  }
+    setProfileView(false);
+  };
 
   return (
     <div
@@ -58,13 +58,13 @@ const ViewStory = (props) => {
           <img
             src={photoUrl}
             alt="profile"
-            className={`round-small `}
+            className={`round-small click-effect`}
             onClick={handleProfilePicClick}
           />
           <p className={`text-light ml-5 font-bold`}>{name}</p>
         </div>
         <button
-          className={`btn-tertiary closeBtn`}
+          className={`btn-tertiary closeBtn click-effect`}
           onClick={handleloseBtnClick}
         >
           <div className={`btn-tertiary close`}></div>
@@ -75,13 +75,16 @@ const ViewStory = (props) => {
       </div>
       {isProfileView && (
         <>
-          <ProfileDropDown data={{
-            name: name,
-            photoUrl,
-            bio: bio,
-            twitterHandle,
-            instagramHandle
-          }} onCloseClick={handleCloseClick} />
+          <ProfileDropDown
+            data={{
+              name: name,
+              photoUrl,
+              bio: bio,
+              twitterHandle,
+              instagramHandle,
+            }}
+            onCloseClick={handleCloseClick}
+          />
           <Backdrop onClick={handleCloseClick} />
         </>
       )}

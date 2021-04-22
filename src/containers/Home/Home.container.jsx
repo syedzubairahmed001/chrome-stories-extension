@@ -7,6 +7,7 @@ import StoryIcon from "../../components/StoryIcon/StoryIcon.component";
 import { GlobalContext } from "../../context/globalContext";
 import { UserContext } from "../../context/userContext";
 import { getAccessToken } from "../../helpers/auth";
+import GreetingHeader from "./GreetingsHeader/GreetingsHeader.component";
 
 const Home = (props) => {
   const { globalContext, setGlobalContext } = React.useContext(GlobalContext);
@@ -15,11 +16,23 @@ const Home = (props) => {
 
   React.useEffect(() => {
     let localUser = JSON.parse(localStorage.getItem("user"));
+    if (localUser && !userContext.user.name) {
+      setUserContext((prev) => ({
+        ...prev,
+        user: {
+          ...prev.user,
+          name: localUser.name,
+          email: localUser.email,
+          profilePicture: localUser.profilePicture,
+          story: localUser.story,
+          themeId: localUser.themeId || "0",
+          bio: localUser.bio || "",
+          twitterHandle: localUser.twitterHandle || "",
+          instagramHandle: localUser.instagramHandle || "",
+        },
+      }));
+    }
     if (globalContext.stories.length === 0) {
-      if(localUser && localUser.themeId){
-
-        setUserContext((prev) => ({ ...prev, user: {...prev.user, themeId: localUser.themeId} }));
-      }
       getStories();
     } else {
       if (localUser && localUser.email) {
@@ -90,16 +103,16 @@ const Home = (props) => {
   };
   const renderStories = () => {
     const stories = globalContext.stories || [];
-     let delay = 1;
+    let delay = 1;
     const storiesCards = stories.map((e, i) => {
       const story = e._fieldsProto;
-      if(i%5 === 0){
-        delay++
+      if (i % 5 === 0) {
+        delay++;
       }
-      console.log({delay}, i%3 === 0)
+      console.log({ delay }, i % 3 === 0);
       return (
         <StoryIcon
-        className={`animate--slide-up a-delay-${delay}`}
+          className={`animate--slide-up a-delay-${delay}`}
           key={i}
           title={story.name.stringValue}
           photoUrl={story.photoUrl.stringValue}
@@ -112,6 +125,7 @@ const Home = (props) => {
   return (
     <div>
       <div className={sytles.container}>
+        {/* <GreetingHeader /> */}
         {userContext.user.email && (
           <StoryIcon
             title="Your Story"

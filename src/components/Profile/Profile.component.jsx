@@ -92,20 +92,28 @@ const Profile = (props) => {
 
           <div className={`mt-10 mb-10 animate--slide-up a-delay-3`}>
             {twitterHandle && (
-              <a href={`https://twitter.com/${twitterHandle}`}>
+              <a
+                href={`https://twitter.com/${twitterHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={twitterLogo}
                   alt="twitter"
-                  className={styles.socialLogo}
+                  className={`${styles.socialLogo} click-effect`}
                 />
               </a>
             )}
             {instagramHandle && (
-              <a href={`https://instagram.com/${instagramHandle}`}>
+              <a
+                href={`https://instagram.com/${instagramHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={instagramLogo}
                   alt="instagram"
-                  className={styles.socialLogo}
+                  className={`${styles.socialLogo} click-effect`}
                 />
               </a>
             )}
@@ -151,7 +159,10 @@ const Profile = (props) => {
           </div>
 
           <div className={`animate--slide-up a-delay-3 mt-10`}>
-            <button className={`btn-secondary  click-effect`} onClick={handlePostEditClick}>
+            <button
+              className={`btn-secondary  click-effect`}
+              onClick={handlePostEditClick}
+            >
               Submit
             </button>
           </div>

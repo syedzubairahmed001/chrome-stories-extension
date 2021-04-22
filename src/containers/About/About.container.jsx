@@ -12,7 +12,7 @@ const About = (props) => {
     <div className="flex flex-column h-100 ">
       <div className="p-10">
         <button
-          className={`btn-tertiary closeBtn`}
+          className={`btn-tertiary closeBtn click-effect`}
           onClick={() =>
             setGlobalContext((prev) => ({ ...prev, currentPage: pages.Home }))
           }
@@ -48,6 +48,30 @@ const About = (props) => {
           </p>
         </div>
       </div>
+      <footer className="text-center mb-10">
+        <div>
+          <p className="font-vsmall text-secondary">Browser Stories v0.2.0</p>
+        </div>
+        <div >
+          <a
+            href="https://stories.zubs.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-2 font-vsmall"
+            >
+            Website
+          </a>
+          <span className="font-vsmall"> | </span>
+          <a
+            href="https://stories-help.zubs.xyz/docs/privacy_policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-2 font-vsmall"
+          >
+            Privacy Policy
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };

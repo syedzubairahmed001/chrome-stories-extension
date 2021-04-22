@@ -58,7 +58,7 @@ const Header = (props) => {
   return (
     <header className={`flex flex-space-between flex-center ${styles.header}`}>
       <div className={`flex flex-center  pl-5`}>
-        <img src={logo} alt="logo" className={`${styles.logo}`} />
+        <img src={logo} alt="logo" className={`${styles.logo} `} />
         <div className={`ml-5`}>
           <h3 className={`${styles.heading} text-secondary `}>Stories</h3>
           {/* <p className="text-small">
@@ -78,6 +78,7 @@ const Header = (props) => {
                     currentPage: pages.Profile,
                   }));
                 }}
+                className="click-effect"
               >
                 Profile
               </li>
@@ -90,21 +91,22 @@ const Header = (props) => {
                   currentPage: pages.About,
                 }));
               }}
+              className="click-effect"
             >
               About
             </li>
-            {userProfilePicture && <li onClick={logout}>Logout</li>}
+            {userProfilePicture && <li onClick={logout} className="click-effect">Logout</li>}
           </ul>
           {userProfilePicture ? (
             <img
-              className={`${styles.profilePicture}`}
+              className={`${styles.profilePicture} click-effect`}
               src={userProfilePicture}
               alt="profile"
               onClick={handleMenuOpen}
             />
           ) : (
             <div className={`flex align-center`}>
-              <div className={`btn-tertiary mr-5`} onClick={onLoginClick}>
+              <div className={`btn-tertiary mr-5 click-effect`} onClick={onLoginClick}>
                 Login
               </div>
               <span className={styles.menuIcon} onClick={handleMenuOpen}>
